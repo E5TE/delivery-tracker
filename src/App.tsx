@@ -81,9 +81,7 @@ function App() {
           </div>
         </div>
       ) : (
-        <div className="h-screen">
-          <Chat trackingNumber={trackingNumber} />
-        </div>
+        <Chat trackingNumber={trackingNumber} />
       )}
     </div>
   )

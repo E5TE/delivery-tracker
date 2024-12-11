@@ -53,8 +53,8 @@ The branch is about 10 minutes walking distance from you. Would you like to rece
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 max-w-[100vw] overflow-hidden">
-      <div className="flex items-center justify-between p-2 sm:p-4 bg-white shadow">
+    <div className="fixed inset-0 flex flex-col bg-gray-100">
+      <div className="flex-none flex items-center justify-between p-2 sm:p-4 bg-white shadow-md">
         <button 
           className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors"
           onClick={handleBack}
@@ -71,7 +71,7 @@ The branch is about 10 minutes walking distance from you. Would you like to rece
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-3">
+      <div className="flex-1 overflow-y-auto overscroll-contain p-2 sm:p-4 space-y-3">
         {messages.map((message) => (
           <div 
             key={message.id} 
@@ -93,42 +93,44 @@ The branch is about 10 minutes walking distance from you. Would you like to rece
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="p-2 sm:p-4 bg-white shadow-lg">
-        <div className="flex items-center gap-1 sm:gap-2">
-          <div className="flex gap-1 sm:gap-2">
-            <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
-                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-              </svg>
-            </button>
-            <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
-                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-              </svg>
-            </button>
-            <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
-                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+      <div className="flex-none bg-white shadow-lg">
+        <form onSubmit={handleSubmit} className="p-2 sm:p-4">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <div className="flex gap-1 sm:gap-2">
+              <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+              </button>
+              <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
+                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                </svg>
+              </button>
+              <button type="button" className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" className="fill-gray-600">
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+              </button>
+            </div>
+            <input
+              type="text"
+              placeholder="How can I help you?"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              className="flex-1 p-2 text-sm sm:text-base border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
+            />
+            <button 
+              type="submit" 
+              className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors flex-shrink-0"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
               </svg>
             </button>
           </div>
-          <input
-            type="text"
-            placeholder="How can I help you?"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            className="flex-1 p-2 text-sm sm:text-base border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
-          />
-          <button 
-            type="submit" 
-            className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" className="fill-current">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

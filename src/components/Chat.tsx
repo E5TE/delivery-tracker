@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BoxIcon } from './BoxIcon';
 import { BotIcon } from './BotIcon';
 
 interface Message {
